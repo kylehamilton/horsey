@@ -1,6 +1,6 @@
 Package: horsey
 Title: Access to the Lichess API
-Version: 0.1.0
+Version: 1.0.0
 Authors@R:
     person("W. Kyle", "Hamilton", email = "kyle.hamilton@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-8642-7990"))
 Description: Package that accesses the Lichess API. Supports both authenticated 

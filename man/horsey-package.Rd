@@ -4,12 +4,20 @@
 \name{horsey-package}
 \alias{horsey}
 \alias{horsey-package}
-\title{horsey: Tools for Analyzing and Exporting Data from the Lichess API}
+\title{horsey: Access to the Lichess API}
 \description{
-Client that accesses the Lichess API. Supports both authenticated and unauthenticated requests.
+Package that accesses the Lichess API. Supports both authenticated and unauthenticated requests. Basic functionality for game and player analysis.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/kylehamilton/horsey}
+  \item Report bugs at \url{https://github.com/kylehamilton/horsey/issues}
+}
+
 }
 \author{
-\strong{Maintainer}: W. Kyle Hamilton \email{kyle.hamilton@gmail.com}
+\strong{Maintainer}: W. Kyle Hamilton \email{kyle.hamilton@gmail.com} (\href{https://orcid.org/0000-0002-8642-7990}{ORCID})
 
 }
 \keyword{internal}
