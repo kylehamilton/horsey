@@ -30,3 +30,5 @@ client <- function(token = NULL, base_url = "https://lichess.org", quiet = FALSE
     class = "horsey_client"
   )
 }
+
+

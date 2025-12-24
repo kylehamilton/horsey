@@ -2,8 +2,8 @@ Package: horsey
 Title: Tools for Analyzing and Exporting Data from the Lichess API
 Version: 0.1.0
 Authors@R:
-    person("W. Kyle", "Hamilton", email = "kyle.hamilton@gmail.com", role = c("aut", "cre"))
-Description: Client that accesses the Lichess API. Supports both authenticated 
+    person("W. Kyle", "Hamilton", email = "kyle.hamilton@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-8642-7990"))
+Description: Package that accesses the Lichess API. Supports both authenticated 
   and unauthenticated requests.
 License: MIT + file LICENSE
 URL: https://github.com/kylehamilton/horsey
