@@ -1,0 +1,23 @@
+Package: horsey
+Title: Tools for Analyzing and Exporting Data from the Lichess API
+Version: 0.1.0
+Authors@R:
+    person("W. Kyle", "Hamilton", email = "kyle.hamilton@gmail.com", role = c("aut", "cre"))
+Description: Client that accesses the Lichess API. Supports both authenticated 
+  and unauthenticated requests.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends: R (>= 4.1.0)
+Imports:
+    httr2,
+    jsonlite,
+    tibble,
+    dplyr,
+    stringr,
+    cli,
+    rlang
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
