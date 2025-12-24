@@ -17,3 +17,14 @@ test_that("result_summary computes W/L/D", {
   expect_true(nrow(os) >= 1)
 })
 
+test_that("winrate calculates overall and player-specific rates", {
+  g <- tibble::tibble(
+    white_user = c("Juniper", "Kyle", "Juniper"),
+    black_user = c("Kyle", "Juniper", "Kat"),
+    winner = c("white", "black", NA_character_)
+  )
+
+  expect_equal(winrate(g), 2 / 3)
+  expect_equal(winrate(g, player = "Juniper"), 2 / 3)
+  expect_true(is.na(winrate(g, player = "Nobody")))
+})
