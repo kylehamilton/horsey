@@ -7,7 +7,7 @@ test_that("result_summary computes W/L/D", {
     opening_eco = c("B10", NA, "B20")
   )
 
-  rs <- result_summary(g, player = "Juniper")
+  rs <- result_summary(g, player = "Juniper") # If anyone reads this Juniper is my cat -wkh
   expect_equal(rs$games, 3)
   expect_equal(rs$wins, 1)
   expect_equal(rs$losses, 1)
@@ -45,4 +45,49 @@ test_that("opening_summary filters missing and limits results", {
   expect_equal(nrow(top), 1)
   expect_equal(top$opening_eco, "C20")
   expect_equal(top$n, 2)
+})
+
+test_that("result_summary returns zeros when player has no games", {
+  g <- tibble::tibble(
+    white_user = c("Juniper", "Kyle"),
+    black_user = c("Kyle", "Kat"),
+    winner = c("white", "black")
+  )
+
+  rs <- result_summary(g, player = "Mr. Ham") # Mr. Ham is our barn cat, he would fair poorly in a chess game -wkh
+  expect_equal(rs$games, 0)
+  expect_equal(rs$wins, 0)
+  expect_equal(rs$losses, 0)
+  expect_equal(rs$draws, 0)
+})
+
+#                       /^--^\     /^--^\     /^--^\
+#                       \____/     \____/     \____/
+#                      /      \   /      \   /      \
+# KAT                 |        | |        | |        |
+#                      \__  __/   \__  __/   \__  __/
+# |^|^|^|^|^|^|^|^|^|^|^|^\ \^|^|^|^/ /^|^|^|^|^\ \^|^|^|^|^|^|^|^|^|^|^|^|
+# | | | | | | | | | | | | |\ \| | |/ /| | | | | | \ \ | | | | | | | | | | |
+# ########################/ /######\ \###########/ /#######################
+# | | | | | | | | | | | | \/| | | | \/| | | | | |\/ | | | | | | | | | | | |
+# |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
+
+test_that("opening_summary orders by frequency and uses default top_n", {
+  g <- tibble::tibble(
+    opening_eco = c("A00", "B01", "B01", "C02", "C02", "C02"),
+    opening_name = c(
+      "Anderssen Opening",
+      "Scandinavian Defense",
+      "Scandinavian Defense",
+      "French Defense: Advance Variation",
+      "French Defense: Advance Variation",
+      "French Defense: Advance Variation"
+    )
+  )
+
+  top <- opening_summary(g)
+
+  expect_equal(nrow(top), 3)
+  expect_equal(top$n, c(3, 2, 1))
+  expect_equal(top$opening_eco, c("C02", "B01", "A00"))
 })
