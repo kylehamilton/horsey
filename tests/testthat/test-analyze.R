@@ -28,3 +28,21 @@ test_that("winrate calculates overall and player-specific rates", {
   expect_equal(winrate(g, player = "Juniper"), 2 / 3)
   expect_true(is.na(winrate(g, player = "Nobody")))
 })
+
+test_that("opening_summary filters missing and limits results", {
+  g <- tibble::tibble(
+    opening_eco = c("B10", "C20", "C20", NA, ""),
+    opening_name = c(
+      "Caro-Kann Defense",
+      "King's Pawn Game",
+      "King's Pawn Game",
+      "French Defense",
+      "Ruy Lopez"
+    )
+  )
+
+  top <- opening_summary(g, top_n = 1)
+  expect_equal(nrow(top), 1)
+  expect_equal(top$opening_eco, "C20")
+  expect_equal(top$n, 2)
+})
