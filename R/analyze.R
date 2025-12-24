@@ -95,3 +95,4 @@ opening_summary <- function(games, top_n = 20) {
     dplyr::slice_head(n = top_n)
 }
 
+#‿︵‿︵‿\o/︵‿︵‿︵‿︵‿︵◢‿︵‿︵‿︵‿
