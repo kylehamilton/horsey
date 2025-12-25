@@ -36,9 +36,10 @@ test_that("client() uses the user provided token and base url", {
   expect_equal(cl$base_url, "https://example.com")
 })
 
-test_that("client() warns about no token found and tells user that some endpoints won't work", {
-  expect_warning(cl <- client())
-})
+test_that("client() warns about no token found and tells user that some endpoints won't work",
+          {
+            expect_warning(cl <- client())
+          })
 
 test_that("client() warns when no token is available", {
   old <- Sys.getenv("LICHESS_TOKEN")
