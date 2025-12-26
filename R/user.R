@@ -4,28 +4,41 @@
 #'
 #' @param cl A `horsey_client`.
 #' @param username Lichess username.
+#' @param tz Time zone for the returned datetime fields. Defaults to `"UTC"`.
 #' @return A tibble with selected fields, plus a `raw` list-column.
 #' @export
-user <- function(cl, username) {
+user <- function(cl, username, tz = "UTC") {
   dat <- horsey_get_json(cl, paste0("/api/user/", username))
+
+  if (!is.character(tz) ||
+      length(tz) != 1L || is.na(tz) || !nzchar(tz)) {
+    stop("`tz` must be a single non-empty character string (e.g., 'UTC').",
+         call. = FALSE)
+  }
+
+  created_ms <- dat$createdAt %||% NA_real_
+  seen_ms    <- dat$seenAt    %||% NA_real_
 
   tibble::tibble(
     id = dat$id %||% NA_character_,
     username = dat$username %||% NA_character_,
     title = dat$title %||% NA_character_,
-    createdAt = as.POSIXct((dat$createdAt %||% NA_real_) / 1000,
-                           origin = "1970-01-01",
-                           tz = "UTC"
-    ),
-    seenAt = as.POSIXct((dat$seenAt %||% NA_real_) / 1000,
-                        origin = "1970-01-01",
-                        tz = "UTC"
-    ),
+    createdAt = if (is.na(created_ms)) {
+      as.POSIXct(NA_real_, origin = "1970-01-01", tz = tz)
+    } else {
+      as.POSIXct(created_ms / 1000, origin = "1970-01-01", tz = tz)
+    },
+    seenAt = if (is.na(seen_ms)) {
+      as.POSIXct(NA_real_, origin = "1970-01-01", tz = tz)
+    } else {
+      as.POSIXct(seen_ms / 1000, origin = "1970-01-01", tz = tz)
+    },
     following = dat$following %||% NA_integer_,
     followers = dat$followers %||% NA_integer_,
     raw = list(dat)
   )
 }
+
 
 #' Get a user's rating history
 #'

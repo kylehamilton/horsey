@@ -4,12 +4,14 @@
 \alias{user}
 \title{Get a user's public profile}
 \usage{
-user(cl, username)
+user(cl, username, tz = "UTC")
 }
 \arguments{
 \item{cl}{A \code{horsey_client}.}
 
 \item{username}{Lichess username.}
+
+\item{tz}{Time zone for the returned datetime fields. Defaults to \code{"UTC"}.}
 }
 \value{
 A tibble with selected fields, plus a \code{raw} list-column.
