@@ -4,9 +4,9 @@
 \name{horsey-package}
 \alias{horsey}
 \alias{horsey-package}
-\title{horsey: Access to the Lichess API}
+\title{horsey: Access to the 'Lichess' API}
 \description{
-Package that accesses the Lichess API. Supports both authenticated and unauthenticated requests. Basic functionality for game and player analysis.
+Package that accesses the 'Lichess' API (\url{https://lichess.org/api}). Supports both authenticated and unauthenticated requests. Basic functionality for game and player analysis.
 }
 \seealso{
 Useful links:

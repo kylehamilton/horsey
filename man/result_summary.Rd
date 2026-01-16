@@ -11,10 +11,10 @@ result_summary(games, player)
 
 \item{player}{Username (required for accurate W/L/D).}
 }
+\value{
+A tibble with one row containing the player name plus totals for
+games, wins, losses, and draws.
+}
 \description{
 Produces win/loss/draw counts for a specified player
-}
-\value{
-A tibble with one row containing the player name plus totals for games, wins,
-losses, and draws.
 }

@@ -11,14 +11,14 @@ opening_summary(games, top_n = 20)
 
 \item{top_n}{Number of top openings to return.}
 }
+\value{
+A tibble of the most common openings with columns for the ECO code,
+opening name, and count of games.
+}
 \description{
 Counts openings from \code{\link[=export_games]{export_games()}} output.
 To include opening information, \code{opening = TRUE} in
 \code{\link[=export_games]{export_games()}}.
-}
-\value{
-A tibble of the most common openings with columns for the ECO code, opening
-name, and count of games.
 }
 \details{
 Two columns are produced by \code{\link[=export_games]{export_games()}} when
