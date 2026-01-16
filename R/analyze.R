@@ -34,6 +34,8 @@ winrate <- function(games, player = NULL) {
 #'
 #' @param games Tibble returned by `export_games()`.
 #' @param player Username (required for accurate W/L/D).
+#' @return A tibble with one row containing the player name plus totals for
+#'   games, wins, losses, and draws.
 #' @export
 result_summary <- function(games, player) {
   stopifnot(is.data.frame(games))
@@ -83,6 +85,8 @@ result_summary <- function(games, player) {
 #' }
 #' @param games Tibble returned by `export_games()`.
 #' @param top_n Number of top openings to return.
+#' @return A tibble of the most common openings with columns for the ECO code,
+#'   opening name, and count of games.
 #' @importFrom rlang .data
 #' @export
 
