@@ -18,3 +18,18 @@
 # install.packages("remotes")
 remotes::install_github("kylehamilton/horsey")
 ```
+
+## Use
+
+```r
+library(horsey)
+
+cl <- horsey::client()
+games <- horsey::export_games(cl, username = "ChessTheory64", max = 250, opening = TRUE)
+ratings <- horsey::rating_history(cl, username = "ChessTheory64")
+```
+
+```r
+plot_opening_counts(games, top_n = 12)
+```
+
